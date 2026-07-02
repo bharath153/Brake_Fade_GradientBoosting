@@ -1,0 +1,30 @@
+HOOK:
+🔴 Brake fade has caused accidents at Le Mans, the Nürburgring, and on public roads. This ML system warns you before it happens.
+
+POST:
+Brake fade occurs when brake components overheat and friction coefficient drops — often suddenly and dangerously. It's a known risk in motorsport, heavy trucks on mountain descents, and even high-performance road cars.
+
+In this project, I built a 3-class early warning classifier (No Fade / Mild / Severe) using thermal sensor + pedal signal data.
+
+Features: Rotor temperature (front/rear), caliper temperature, pad wear, pedal force, deceleration, consecutive stop count, approach speed.
+
+Results:
+✅ CV Accuracy = 89.7%
+✅ CV F1-macro = 88.6%
+✅ AUC = 0.97+ for severe fade class (most critical)
+✅ Prediction intervals generated via probability calibration
+
+Key finding: Rotor temperature and consecutive stops are the two dominant predictors — consistent with brake thermal physics.
+
+Application: Real-time CAN-bus integration → driver warning → autonomous brake force modulation (AEB adaptation).
+
+🔗 Full code + plots on GitHub (link in comments)
+
+HASHTAGS:
+#BrakeFade #ActiveSafety #MachineLearning #XGBoost #AutomotiveSafety #ADAS #Motorsport #Classification #OpenToWork
+
+---
+IMAGE SUGGESTION:
+Use `plots/fig1_*.png` (performance chart) as the main LinkedIn image.
+Optionally combine fig1 + fig4 into a 2-panel image using any image editor.
+Keep image width > 1200px for best display in feed.
