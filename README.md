@@ -2,9 +2,6 @@
 
 > Three-class brake-fade risk classification from synthetic thermal and braking signals
 
-> [!NOTE]
-> The repository name is retained for continuity, but the implementation uses scikit-learn's `GradientBoostingClassifier`, **not XGBoost**.
-
 ## Overview
 
 This project demonstrates a brake-fade risk-classification workflow using synthetic automotive sensor variables.
@@ -52,8 +49,8 @@ The repository exports:
 ## Run
 
 ```bash
-git clone https://github.com/bharath153/Brake_Fade_XGB.git
-cd Brake_Fade_XGB
+git clone https://github.com/bharath153/Brake_Fade_GradientBoosting.git
+cd Brake_Fade_GradientBoosting
 pip install -r requirements.txt
 python src/train_classifier.py
 ```
@@ -61,7 +58,7 @@ python src/train_classifier.py
 ## Repository Structure
 
 ```text
-Brake_Fade_XGB/
+Brake_Fade_GradientBoosting/
 ├── src/
 │   └── train_classifier.py
 ├── plots/
