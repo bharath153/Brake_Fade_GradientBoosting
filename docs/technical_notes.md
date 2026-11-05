@@ -1,23 +1,38 @@
-# Technical Notes — Brake Fade Early Warning System — XGBoost
+# Technical Notes — Brake Fade Gradient-Boosting Classifier
 
-## Data Generation Methodology
-The synthetic dataset is constructed using physics-informed equations that capture the dominant engineering relationships in Active Safety & Brake Systems. While synthetic, the data distributions and feature interactions are calibrated to match published literature values.
+## Purpose
 
-## Model Selection Rationale
-**Gradient Boosting Classifier (XGBoost-style)** was chosen for the following reasons:
-- Appropriate for the dataset size and feature structure
-- Validated performance on similar engineering regression/classification tasks in literature
-- Interpretable outputs compatible with engineering design workflows
+This repository demonstrates multiclass brake-fade risk classification from synthetic thermal and operating-state variables.
 
-## Hyperparameter Tuning
-Where applicable, hyperparameters were tuned via cross-validated grid or random search. Final parameters are documented in the main script.
+## Synthetic Inputs
 
-## Known Limitations
-1. Synthetic data does not capture all real-world noise and sensor artefacts
-2. Model is validated within the training design space (interpolation); extrapolation should be treated with caution
-3. For production deployment, re-training on real experimental data is required
+The generated feature set includes:
+- front and rear rotor temperature;
+- caliper temperature;
+- pad wear;
+- pedal force;
+- deceleration;
+- brake-application duration;
+- vehicle speed;
+- consecutive stops.
 
-## References
-- Forrester, A.I.J., Sóbester, A., Keane, A.J. (2008). *Engineering Design via Surrogate Modelling: A Practical Guide*. Wiley.
-- Scikit-learn: Pedregosa et al. (2011). Journal of Machine Learning Research, 12, 2825-2830.
-- Domain-specific references are noted inline in the main script.
+The class target is generated from a rule-based fade score with added random variation.
+
+## Model
+
+The implementation uses scikit-learn's `GradientBoostingClassifier`.
+
+It does **not** use the XGBoost library and does not claim SHAP-based interpretation.
+
+## Validation
+
+The repository uses:
+- stratified train/test splitting;
+- stratified 5-fold cross-validation;
+- accuracy and macro-F1;
+- confusion matrix;
+- one-vs-rest ROC curves.
+
+## Limitations
+
+This is not a safety-validated brake model. Real deployment would require measured brake temperatures, fade ground truth, vehicle-specific calibration, uncertainty analysis, fault-tolerance assessment and validation under representative duty cycles.
