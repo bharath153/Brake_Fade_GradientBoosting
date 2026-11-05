@@ -1,5 +1,5 @@
 """
-Brake Fade Early Warning System — XGBoost + SHAP
+Brake Fade Early Warning — Gradient Boosting Classifier
 =================================================
 Classifies brake fade risk (None / Mild / Severe) from
 thermal sensor & brake pedal signals on a high-performance vehicle.
@@ -76,7 +76,7 @@ json.dump({"CV_Accuracy": round(acc.mean(),4), "CV_F1_macro": round(f1.mean(),4)
 
 # Fig 1 — Confusion Matrix
 fig, axes = plt.subplots(1, 2, figsize=(13, 5))
-fig.suptitle('Brake Fade Classifier — XGBoost Performance', fontsize=14, fontweight='bold')
+fig.suptitle('Brake Fade Classifier — Gradient Boosting Performance', fontsize=14, fontweight='bold')
 cm = confusion_matrix(y_test, y_pred)
 disp = ConfusionMatrixDisplay(cm, display_labels=label_names)
 disp.plot(ax=axes[0], colorbar=False, cmap='Blues')
